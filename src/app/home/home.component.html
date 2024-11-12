@@ -1,0 +1,19 @@
+<div class="split-container">
+  <!-- Left Side -->
+  <div class="title-container left">
+    <h1 class="app-title syncopate-bold">Syncvite</h1>
+    <p class="tagline">Plan parties, sync with friends, and have fun effortlessly!</p>
+  </div>
+
+  <!-- Right Side -->
+  <div class="right">
+    <nz-carousel [nzAutoplay]="true" [nzAutoplaySpeed]="3000" [nzEffect]="'scrollx'" [nzDotPosition]="'right'" class="carousel">
+      <div nz-carousel-content *ngFor="let item of carouselItems">
+        <div class="carousel-item">
+          <img [src]="item.image" alt="Carousel Item" />
+          <p class="carousel-tag">{{ item.description }}</p>
+        </div>
+      </div>
+    </nz-carousel>
+  </div>
+</div>

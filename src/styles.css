@@ -1,1 +1,21 @@
-/* You can add global styles to this file, and also import other style files */
+/* Global styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Syncopate", sans-serif;
+    font-weight: 400;
+  }
+  
+  /* Font styles */
+  .syncopate-regular {
+    font-family: "Syncopate", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  .syncopate-bold {
+    font-family: "Syncopate", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+  

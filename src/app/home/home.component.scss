@@ -1,0 +1,117 @@
+.split-container {
+  display: flex;
+  flex-direction: row; /* Side-by-side layout */
+  height: 100vh; /* Full viewport height */
+  width: 100vw; /* Full viewport width */
+  overflow: hidden; /* Prevent scrolling */
+}
+
+.left {
+  flex: 1; /* Take up half the width */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start; /* Align text to the left */
+  padding: 2vw; /* Use viewport-based padding for responsiveness */
+  background-color: #0078d7; /* Background color for left side */
+  color: white;
+  box-sizing: border-box; /* Ensure padding is included in the width */
+}
+
+.app-title {
+  font-size: 8vw; /* Start with a dynamic size */
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.1; /* Adjust line height */
+  white-space: nowrap; /* Ensure the title stays on one line */
+  overflow: hidden; /* Prevent overflow */
+  word-wrap: normal; /* No wrapping */
+  text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5); /* Add depth */
+
+  /* Dynamically shrink the font size to fit */
+  display: block;
+  width: 100%; /* Constrain to the width of the left panel */
+  max-width: 100%;
+}
+
+.tagline {
+  font-size: 2vw; /* Scale tagline with viewport width */
+  margin-top: 1rem;
+  color: #f5f5f5;
+  width: 100%; /* Ensure tagline doesn't overflow */
+}
+
+.carousel-item {
+  display: flex;
+  flex-direction: column; /* Stack the image and tag vertically */
+  justify-content: space-between; /* Ensure both image and tag are spaced properly */
+  align-items: center; /* Center-align the content */
+  height: 100%; /* Full height of the carousel */
+  box-sizing: border-box; /* Include padding and border in width calculations */
+}
+
+.carousel-tag {
+  font-size: clamp(1rem, 2vw, 2.5rem); /* Dynamic font size based on viewport */
+  color: #333; /* Text color for visibility */
+  text-align: center; /* Center-align text */
+  margin-top: 1rem; /* Add spacing from the image */
+  width: 100%; /* Ensure it spans the width of the carousel */
+  flex-shrink: 0; /* Prevent the tag from collapsing */
+  line-height: 1.2; /* Adjust spacing between lines */
+  visibility: visible; /* Ensure it's always visible */
+  overflow: visible; /* Prevent clipping */
+  height: auto; /* Allow it to take necessary space */
+
+}
+
+
+.right {
+  flex: 1; /* Take up half the width */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f5f5f5;
+  padding: 1vw; /* Use responsive padding */
+  flex-direction: column; /* Stack carousel and other content vertically */
+  overflow: hidden; /* Prevent accidental overflow */
+
+}
+
+.carousel {
+  width: 100%; /* Full width of the right container */
+  height: 100%; /* Full height of the right container */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.carousel-item img {
+  width: auto;
+  max-height: 75%;
+  object-fit: cover; /* Maintain aspect ratio and fill the space */
+  border-radius: 8px;
+}
+
+
+@media (max-width: 768px) {
+  .split-container {
+    flex-direction: column; /* Stack content vertically */
+  }
+
+  .left, .right {
+    flex: none; /* Reset flex behavior */
+    width: 100%; /* Full width for both sections */
+    height: 50%; /* Half height for each section */
+  }
+
+  .app-title {
+    font-size: 8vw; /* Slightly smaller for mobile */
+  }
+
+  .tagline {
+    font-size: 3vw; /* Adjust tagline size for mobile */
+  }
+  
+}
+
