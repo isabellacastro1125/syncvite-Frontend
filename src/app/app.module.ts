@@ -1,18 +1,16 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
+import { AvatarModule } from 'primeng/avatar';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component'; // Adjust the path as needed
 import { AppRoutingModule } from './app-routing.module'; // Import your routing module
 
 
-// Ng-Zorro modules
-import { NzCarouselModule } from 'ng-zorro-antd/carousel';
-
 @NgModule({
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   declarations: [
     AppComponent,
     HomeComponent
@@ -22,7 +20,8 @@ import { NzCarouselModule } from 'ng-zorro-antd/carousel';
     BrowserAnimationsModule,
     FormsModule,
     AppRoutingModule, // Include the routing module
-    NzCarouselModule, // Import the carousel module
+    AvatarModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

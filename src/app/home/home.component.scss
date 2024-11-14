@@ -1,117 +1,84 @@
-.split-container {
+.center-container {
   display: flex;
-  flex-direction: row; /* Side-by-side layout */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
   height: 100vh; /* Full viewport height */
   width: 100vw; /* Full viewport width */
-  overflow: hidden; /* Prevent scrolling */
-}
-
-.left {
-  flex: 1; /* Take up half the width */
-  display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: flex-start; /* Align text to the left */
-  padding: 2vw; /* Use viewport-based padding for responsiveness */
-  background-color: #0078d7; /* Background color for left side */
-  color: white;
-  box-sizing: border-box; /* Ensure padding is included in the width */
 }
 
 .app-title {
-  font-size: 8vw; /* Start with a dynamic size */
+  font-size: 8vw; /* Dynamic font size based on viewport width */
   font-weight: 700;
-  margin: 0;
+  margin: 0; /* No margin around the title */
   line-height: 1.1; /* Adjust line height */
-  white-space: nowrap; /* Ensure the title stays on one line */
-  overflow: hidden; /* Prevent overflow */
-  word-wrap: normal; /* No wrapping */
-  text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5); /* Add depth */
+  text-align: center; /* Center-align the text */
+  color: #140152d2; /* Slightly lighter text color */
 
-  /* Dynamically shrink the font size to fit */
-  display: block;
-  width: 100%; /* Constrain to the width of the left panel */
-  max-width: 100%;
+}
+
+.login {
+  display: flex; /* Arrange icon and text horizontally */
+  align-items: center; /* Vertically center icon and text */
+  justify-content: center;
+  height: auto; /* Automatically adjust height */
+  padding: 0.5rem 1rem; /* Add spacing inside the button */
+  font-size: 1.5rem; /* Adjust font size for text */
+  border: 2px solid #2d00f7; /* Add a border for visibility */
+  border-radius: 5px; /* Optional: Add rounded corners */
+  background-color: transparent; /* Transparent background */
+  color: #2d00f7; /* Text and icon color */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s ease;
+}
+
+.login i {
+  margin-right: 0.5rem; /* Add spacing between the icon and text */
+}
+
+.g_id_signin {
+  display: none;
+}
+
+
+.logo-icon {
+  font-size: 2rem; /* Adjust size as needed */
+  color: #2d00f7; /* Change the icon color */
+  margin-right: 1rem; /* Add spacing between the icon and the button */
+}
+
+.login:hover {
+  background-color: #2d00f7; /* Change background on hover */
+  color: #fff; /* Change text and icon color on hover */
+}
+
+button:hover i {
+  color: #fff; /* Ensure the icon also changes color on hover */
+}
+
+header {
+  display: flex;
+  justify-content: flex-end; /* Align items to the right */
+  align-items: center; /* Vertically align items */
+  padding: 1rem;
 }
 
 .tagline {
-  font-size: 2vw; /* Scale tagline with viewport width */
-  margin-top: 1rem;
-  color: #f5f5f5;
-  width: 100%; /* Ensure tagline doesn't overflow */
+  font-size: 1.65vw; /* Dynamic font size based on viewport width */
+  margin-top: 1rem; /* Spacing below the title */
+  text-align: center; /* Center-align the tagline */
+  color: #f5f5f5; /* Slightly lighter text color */
 }
 
-.carousel-item {
-  display: flex;
-  flex-direction: column; /* Stack the image and tag vertically */
-  justify-content: space-between; /* Ensure both image and tag are spaced properly */
-  align-items: center; /* Center-align the content */
-  height: 100%; /* Full height of the carousel */
-  box-sizing: border-box; /* Include padding and border in width calculations */
+.glow-text {
+  animation: glow 3s infinite;
 }
 
-.carousel-tag {
-  font-size: clamp(1rem, 2vw, 2.5rem); /* Dynamic font size based on viewport */
-  color: #333; /* Text color for visibility */
-  text-align: center; /* Center-align text */
-  margin-top: 1rem; /* Add spacing from the image */
-  width: 100%; /* Ensure it spans the width of the carousel */
-  flex-shrink: 0; /* Prevent the tag from collapsing */
-  line-height: 1.2; /* Adjust spacing between lines */
-  visibility: visible; /* Ensure it's always visible */
-  overflow: visible; /* Prevent clipping */
-  height: auto; /* Allow it to take necessary space */
-
+@keyframes glow {
+  0% { text-shadow: 0 0 5px #2d00f7, 0 0 10px #2d00f7; }
+  50% { text-shadow:3px 3px 10px #2d00f7, 3px 3px 10px #2d00f7; }
+  100% { text-shadow: 0 0 5px #2d00f7, 0 0 10px #2d00f7; }
 }
 
 
-.right {
-  flex: 1; /* Take up half the width */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #f5f5f5;
-  padding: 1vw; /* Use responsive padding */
-  flex-direction: column; /* Stack carousel and other content vertically */
-  overflow: hidden; /* Prevent accidental overflow */
-
-}
-
-.carousel {
-  width: 100%; /* Full width of the right container */
-  height: 100%; /* Full height of the right container */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-
-.carousel-item img {
-  width: auto;
-  max-height: 75%;
-  object-fit: cover; /* Maintain aspect ratio and fill the space */
-  border-radius: 8px;
-}
-
-
-@media (max-width: 768px) {
-  .split-container {
-    flex-direction: column; /* Stack content vertically */
-  }
-
-  .left, .right {
-    flex: none; /* Reset flex behavior */
-    width: 100%; /* Full width for both sections */
-    height: 50%; /* Half height for each section */
-  }
-
-  .app-title {
-    font-size: 8vw; /* Slightly smaller for mobile */
-  }
-
-  .tagline {
-    font-size: 3vw; /* Adjust tagline size for mobile */
-  }
-  
-}
 
