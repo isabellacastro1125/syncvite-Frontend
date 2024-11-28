@@ -1,0 +1,133 @@
+<div class="create-component">
+    <mat-horizontal-stepper [linear]="true" #stepper>
+      <!-- Step 1: Basic Details -->
+      <mat-step label="Party Details" [stepControl]="basicDetails">
+        <form [formGroup]="basicDetails">
+          <h2 class="syncopate-bold">Step 1: Party Details</h2>
+          <fieldset>
+            <label for="name">Party Name:</label>
+            <input id="name" formControlName="title" />
+            <div *ngIf="basicDetails.get('title')?.invalid && (basicDetails.get('title')?.touched || basicDetails.get('title')?.dirty)" class="error">
+                Party Name is required.
+            </div>
+          </fieldset>
+          <fieldset>
+            <label for="location">Location:</label>
+            <input id="location" formControlName="location" />
+            <div *ngIf="basicDetails.get('location')?.invalid && (basicDetails.get('location')?.touched || basicDetails.get('location')?.dirty)" class="error">
+                Location is required.
+            </div>
+          </fieldset>   
+          <fieldset>
+            <label for="date">Date:</label>
+            <input id="date" type="date" formControlName="date" />
+            <div *ngIf="basicDetails.get('date')?.invalid && (basicDetails.get('date')?.touched || basicDetails.get('date')?.dirty)" class="error">
+                Date is required.
+            </div>
+          </fieldset> 
+          <fieldset>
+            <label for="time">Time:</label>
+            <input id="time" type="time" formControlName="time" /> <!-- New time field -->
+            <div *ngIf="basicDetails.get('time')?.invalid && (basicDetails.get('time')?.touched || basicDetails.get('time')?.dirty)" class="error">
+                Time is required.
+            </div>
+          </fieldset>      
+          <fieldset>
+            <label for="theme">Theme:</label>
+            <input id="theme" formControlName="theme" />
+          </fieldset>  
+          <fieldset>
+            <label for="description">Description:</label>
+            <textarea id="description" formControlName="description"></textarea>
+          </fieldset>  
+          <div>
+            <button mat-button matStepperNext (click)="onNext(basicDetails)">Next</button>
+          </div>
+        </form>
+      </mat-step>
+    
+      <!-- Step 2: Guests -->
+      <mat-step label="Add Guests" [stepControl]="invitations">
+        <form [formGroup]="partyForm">
+          <h2 class="syncopate-bold">Step 2: Add Guests</h2>
+          <div formArrayName="invitations">
+            <div *ngFor="let guest of invitations.controls; let i = index" [formGroupName]="i">
+              <fieldset>
+                <label for="guest-name">Guest Name:</label>
+                <input id="guest-name" formControlName="guest_name" />
+                <div *ngIf="guest.get('guest_name')?.invalid && (guest.get('guest_name')?.touched || guest.get('guest_name')?.dirty)" class="error">
+                    Guest Name is required.
+                </div>
+              </fieldset>
+              <fieldset>
+                <label for="guest-phone">Phone:</label>
+                <input placeholder="xxx-xxx-xxxx" id="guest-phone" formControlName="guest_phone" />
+                <div *ngIf="guest.get('guest_phone')?.invalid && (guest.get('guest_phone')?.touched || guest.get('guest_phone')?.dirty)" class="error">
+                    Phone is required and must be a valid 10-digit number.
+                </div>
+              </fieldset>  
+              
+    
+              <button mat-button type="button" id="remove-button" (click)="removeInvitation(i)">Remove</button>
+            </div>
+          </div>
+          <button mat-button type="button"  id="add-button" (click)="addInvitation()">Add Guest</button>
+    
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext (click)="onNext(invitations)">Next</button>
+          </div>
+        </form>
+      </mat-step>
+
+      <!-- Step 3: Items -->
+      <mat-step label="Add Items" [stepControl]="items">
+        <form [formGroup]="partyForm">
+          <h2 class="syncopate-bold">Step 3: Add Items</h2>
+          <div formArrayName="items">
+            <div *ngFor="let item of items.controls; let i = index" [formGroupName]="i">
+                <fieldset>
+                    <label for="item-name">Item Name:</label>
+                    <input id="item-name" formControlName="item_name" />
+                    <div *ngIf="item.get('item_name')?.invalid && (item.get('item_name')?.touched || item.get('item_name')?.dirty)" class="error">
+                        Item name is required.
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <label for="item-description">Description:</label>
+                    <textarea id="item-description" formControlName="description" ></textarea>
+                </fieldset>
+                <fieldset>
+                  <label for="brought-by">Brought By:</label>
+                  <select id="brought-by" formControlName="broughtBy">
+                    <option *ngFor="let guest of invitations.controls; let j = index" [value]="guest.value.guest_phone">
+                      {{ guest.value.guest_name }}
+                    </option>
+                  </select>
+                </fieldset>
+              <button mat-button type="button" id="remove-button" (click)="removeItem(i)">Remove</button>
+            </div>
+          </div>
+          <button mat-button type="button" id="add-button" (click)="addItem()">Add Item</button>
+    
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext (click)="onNext(items)">Next</button>
+          </div>
+        </form>
+      </mat-step>
+    
+      <!-- Step 4: Review and Submit -->
+      <mat-step label="Save">
+        <h2 class="syncopate-bold">Step 4: Review</h2>
+        <p>Review your party details and submit.</p>
+        <pre>{{ partyForm.value | json }}</pre>
+    
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button (click)="submitForm()">Submit</button>
+        </div>
+      </mat-step>
+    </mat-horizontal-stepper>
+  </div>
+  

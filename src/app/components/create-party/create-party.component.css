@@ -1,0 +1,126 @@
+/* Stepper styling */
+mat-horizontal-stepper {
+    background-color: #7024c2a6; /* Transparent background */
+    width: 90%; /* Allow stepper to take most of the container width */
+    max-width: 600px; /* Limit the width to a reasonable size */
+    max-height: 100%; /* Ensure it doesn’t exceed the container */
+    overflow: auto; /* Ensure no content is hidden */
+    display: flex; /* Flexbox for proper alignment of content */
+    flex-direction: column; /* Stack content vertically */
+    -ms-overflow-style: none; /* Hide scrollbar in Internet Explorer */
+    scrollbar-width: none; /* Hide scrollbar in Firefox */
+  }
+
+::ng-deep mat-horizontal-stepper .mat-stepper-horizontal-line {
+    height: 3px; /* Thick line */
+    background-color: #ffffff; /* white color */
+    border-radius: 2px; /* Optional: Add rounding for smoother edges */
+}
+
+::ng-deep mat-horizontal-stepper .mat-step-header .mat-step-icon {
+    background-color: #000428; /* Default background */
+    color: rgb(255, 255, 255); /* Default number color */
+}
+
+  /* Step content */
+mat-step {
+    padding: 10px;
+    min-height: 100px; /* Ensure enough space for content */
+    display: flex; /* Flexbox layout */
+    flex-direction: column; /* Stack content vertically */
+    justify-content: flex-start; /* Align content at the top */
+    flex-grow: 1; /* Allow content to grow and fill available space */
+    overflow-y: auto; /* Enable vertical scrolling within the step */
+  }
+
+  input[type="time"] {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  
+  /* Button spacing */
+  button[mat-button] {
+    margin: 5px;
+    background-color: #000428;
+    color: white;
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+}
+
+button[mat-button]:hover {
+    background-color: #ffffff; /* Change background color on hover */
+    color: #000428; /* Optional: Change text color on hover */
+    transform: scale(1.1); /* Slightly enlarge the button */
+    cursor: pointer; /* Pointer cursor on hover */
+
+}
+
+button[mat-button][id="remove-button"] {
+    margin: 5px;
+    background-color: #da0909ce;
+    color: white;
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+}
+
+button[mat-button][id="remove-button"]:hover {
+    transform: scale(1.1); /* Slightly enlarge the button */
+    cursor: pointer; /* Pointer cursor on hover */
+
+}
+
+button[mat-button][id="add-button"] {
+    margin: 5px;
+    background-color: #0cc34f;
+    color: white;
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+}
+
+button[mat-button][id="add-button"]:hover {
+    transform: scale(1.1); /* Slightly enlarge the button */
+    cursor: pointer; /* Pointer cursor on hover */
+
+}
+
+  fieldset{
+    border: 0;
+  }
+  
+  /* Parent container */
+  .create-component {
+    width: 100vw; /* Full viewport width */
+    height: 100vh; /* Full viewport height */
+    display: flex; /* Flexbox layout for centering */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    box-sizing: border-box; /* Include padding/border in width/height calculations */
+    padding: 20px; /* Add padding to prevent content from touching edges */
+    overflow: hidden; /* Prevent content overflow */
+  }
+  
+  /* Responsive input fields */
+  input, textarea, select {
+    width: 100%; /* Full width for form fields */
+    max-width: 100%; /* Prevent overflow */
+    box-sizing: border-box; /* Include padding/border in width */
+  }
+  
+  textarea {
+    height: 80px; /* Fixed height */
+    resize: none; /* Disable resizing for consistent layout */
+  }
+
+  h2{
+    text-align: center;
+  }
+
+  .error {
+    color: red;
+    font-size: 0.875rem;
+    margin-top: 4px;
+  }
+  
+  input.ng-invalid.ng-touched,
+  textarea.ng-invalid.ng-touched {
+    border: 1px solid red;
+  }
+  

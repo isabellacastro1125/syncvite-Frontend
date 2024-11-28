@@ -1,10 +1,15 @@
 <header>
-  <button class="roboto-thin-italic login" (click)="triggerGoogleOAuth()">
-    <i class="pi pi-user"></i>
-    Sign in with Google
-  </button>
+  <nav>
+    <a routerLink="/create-party">Create Party</a>
+    <a routerLink="/party/1">View Party</a>
+  </nav>
 </header>
 <div class="center-container">
   <h1 class="glow-text app-title syncopate-bold">Syncvite</h1>
   <p class="tagline roboto-thin-italic">Plan Parties, Sync With Friends, and Have Fun Effortlessly!</p>
+  <button class="roboto-regular-italic login" (click)="triggerGoogleOAuth()">
+    <i class="pi pi-user"></i>
+    Sign in/up with Google
+  </button>
 </div>
+
